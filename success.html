@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | The Freedom Offer Formula™</title>
+
+  <!-- Tailwind CSS (Required for Terms Page styling) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --burgundy: #6B1D28;
+      --warm-beige: #F5F1EA;
+      --off-white: #FCFAF7;
+      --charcoal: #2D2926;
+    }
+
+    /* Reset basics just for the Success Page parts to ensure consistency despite Tailwind */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--warm-beige);
+      color: var(--charcoal);
+    }
+
+    /* Helper Classes for View Switching */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* --- SUCCESS PAGE STYLES --- */
+    .success-wrapper .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .success-wrapper .container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .success-wrapper .card {
+      background-color: var(--off-white);
+      max-width: 900px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .success-wrapper .image-side {
+      background-color: #e7e1d7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .success-wrapper .image-side img {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      display: block; /* Tailwind fix */
+    }
+
+    .success-wrapper .content {
+      padding: 4rem 3.5rem;
+      text-align: left; /* Ensure alignment */
+    }
+
+    .success-wrapper .badge {
+      display: inline-block;
+      background-color: var(--burgundy);
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .success-wrapper h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .success-wrapper h1 span {
+      color: var(--burgundy);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .success-wrapper p {
+      font-size: 1rem;
+      line-height: 1.7;
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .success-wrapper .highlight {
+      font-weight: 600;
+      color: var(--burgundy);
+    }
+
+    .success-wrapper .button {
+      display: inline-block;
+      background-color: var(--burgundy);
+      color: #fff;
+      text-decoration: none;
+      padding: 1.1rem 2.6rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .success-wrapper .button:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px rgba(107, 29, 40, 0.5);
+    }
+
+    .success-wrapper .note {
+      font-size: 0.85rem;
+      opacity: 0.65;
+      margin-top: 2rem;
+    }
+
+    .success-wrapper footer {
+      background-color: var(--off-white);
+      border-top: 1px solid rgba(45,41,38,0.08);
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+
+    .success-wrapper footer button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      opacity: 0.6;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .success-wrapper footer button:hover {
+      color: var(--burgundy);
+      opacity: 1;
+    }
+
+    .success-wrapper footer p {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .success-wrapper .card {
+        grid-template-columns: 1fr;
+      }
+
+      .success-wrapper .content {
+        text-align: center;
+        padding: 3rem 2rem;
+      }
+    }
+
+    /* --- TERMS PAGE STYLES (Ported from previous file) --- */
+    .section-padding {
+        padding: 4rem 1.5rem;
+    }
+    @media (max-width: 768px) {
+        .section-padding {
+            padding: 3rem 1.25rem;
+        }
+    }
+    .serif {
+        font-family: 'Playfair Display', serif;
+    }
+    .prose-text p {
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+    .bg-off-white { background-color: var(--off-white); }
+    .text-burgundy { color: var(--burgundy); }
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- VIEW 1: SUCCESS PAGE -->
+  <div id="success-view" class="view active success-wrapper">
+    <div class="page">
+      <div class="container">
+        <div class="card">
+
+          <!-- Image -->
+          <div class="image-side">
+            <img src="https://images.clickfunnels.com/e7/3f465edeff4ccfac2984cb75d5240b/Screenshot-2026-01-19-at-3.57.49-PM.png" alt="Freedom Offer Formula">
+          </div>
+
+          <!-- Content -->
+          <div class="content">
+            <div class="badge">Payment Successful</div>
+
+            <h1>
+              Thank you! <br>
+              <span>You’re officially in.</span>
+            </h1>
+
+            <p>
+              Your purchase of <span class="highlight">The Freedom Offer Formula™</span> was successful.
+            </p>
+
+            <a
+              href="https://drive.google.com/file/d/103r0KPoRreDETMW-cZ-CMZmGElVX-jpK/view?usp=sharing"
+              target="_blank"
+              class="button"
+            >
+              Download Your Guide
+            </a>
+
+            <p class="note">
+              You will also receive an email confirmation with a link to download the Workbook from there too!<br><br>
+              Keep an eye out in your inbox (check spam/junk folders)
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <button onclick="showView('terms')">
+          Terms & Conditions
+        </button>
+        <p>Copyright 2025 – “Dina Shakir Coaching” – All Rights Reserved</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- VIEW 2: TERMS & CONDITIONS -->
+  <div id="terms-view" class="view">
+    <section class="section-padding pt-24 md:pt-32 bg-off-white min-h-screen text-left">
+        <div class="max-w-4xl mx-auto px-4 md:px-6 text-left text-left">
+            <button onclick="showView('success')" class="text-xs uppercase tracking-widest opacity-40 hover:opacity-100 mb-10 md:mb-12 flex items-center gap-2 transition-opacity text-left text-charcoal">
+                ← Back
+            </button>
+            
+            <h1 class="text-3xl md:text-5xl font-semibold mb-2 text-left text-charcoal font-serif">Scaling with Dina</h1>
+            <p class="serif italic text-burgundy mb-10 md:mb-12 text-left">Terms and Conditions • Last Updated on August 30th, 2025</p>
+
+            <div class="prose prose-sm text-charcoal/80 space-y-6 leading-relaxed text-left text-left">
+                <p><strong>1. AGREEMENT:</strong> By completing this purchase and making your payment (or part payment if paying in instalments), you acknowledge and agree that you have read these Terms and Conditions, our Privacy Policy, and Disclaimer.</p>
+
+                <p><strong>2. PROGRAM ENTITY:</strong> This program is an “all or nothing” purchase. There are no part payments for part delivery of content – and there is no option for a bespoke course or part access to the content. This is not a pay by month, or "pay-for-partial-access" program.</p>
+
+                <p><strong>3. PRICE:</strong> The price of the course is currently £$3,400 and subject to change at any time. Dina Shakir reserves the right to run regular promotions, special offers and / or make scholarships and discounts available to potential clients at her discretion.</p>
+
+                <p><strong>4. SUPPORT CALLS:</strong> Days and times of the support calls are given in your Welcome Email and are subject to change.</p>
+
+                <p><strong>5. PAYMENT:</strong> Clients who pay in full will receive x3 45-minute 1-2-1 strategy sessions with Dina, an extra 3 months of membership (meaning you will be a Scaling with Systems live student for a full 6 months, rather than 3), and 1 piece of branding. You can choose between a logo, a Facebook profile cover image, or a Facebook group cover image.<br><br>Clients who opt for a Payment Plan will not get the 1-2-1 strategy session with Dina Shakir. Once the first instalment is paid, the remaining instalments are due on the same day of the following months. For example, if you pay the first instalment on 1st June, then the second instalment is due on 1st July and the next instalment on 1st August of the same year, etc. (Where these dates fall on a week-end, the payment is due on the previous week day). When paying in installments, you understand that you are agreeing to pay the full course price as shown on your order form or invoice, not just the first month, and agree to honour each payment until fully paid. A lack of results is not a reason to demand payments are stopped, as results are subject to the amount of time and effort the client has put into the course and work carried out as a result of the learnings, and not on the course itself. No exceptions can be made for this, especially in cases when clients are found to have shown little effort in the course by not watching the video lessons and / or not showing up the weekly calls.</p>
+
+                <p><strong>6. FAILED PAYMENTS:</strong> If your payment or card is declined for any reason (insufficient credit, closed, expired, or other reason), Stripe will automatically re-try your card within 3 working days. You agree to ensure funds are available for the re-try. Failure to do so will cause your access to the program to be suspended immediately. This means you will no longer have access to the course video lessons, Facebook group or weekly support calls.</p>
+
+                <p><strong>7. REFUNDS:</strong> Because of the nature of the content delivery, which means clients get instant access to the full course content immediately at the time of enrolling, Scaling with Systems has a strict no-refunds policy.</p>
+
+                <p><strong>8. SUPPORT:</strong> Questions (in between strategy calls) are to be submitted via the Facebook group and not via Facebook Private Message to Dina Shakir. This is to ensure that all course members benefit from the answer and to ensure Dina is able to manage her time and energy. Dina will always do her best to jump on any questions in the group as soon as she sees them, but please appreciate that we cannot guarantee an immediate reply. Questions posted after 4.30pm UK time will most likely be looked at on the next working day. Where Dina engages over Facebook Messanger with a client for support, this is an exception and not the rule, and should not come to be expected.</p>
+
+                <p><strong>9. MARKETING:</strong> By joining this course, you agree to let Dina Shakir share any of your posts / results / testimonials / or any messages to Dina stating how you are benefitting from the course to her social media audience as marketing for future clients. You also agree that you are happy for Dina or a member of her team to share the news of your enrolment to her social media audience and that you are happy for Dina to use your current profile picture in the enrolment news post on her profile, as well as inside any of her paid or non-paid groups.</p>
+
+                <p><strong>10. ATTITUDE AND COACHABILITY:</strong> When joining a coaching course with a mindset coaching element to it, it is paramount that each student is committed to bringing their best self to every interaction with the coach and other course members. The Facebook group rules state clearly that we will not accept any bullying or attacks on any of the members, but we also expect from each member to show up with a positive and can-do attitude to every call and interaction. We will not tolerate slander, rudeness or a toxic “problem for every solution” attitude that affects the high vibe of the community. This is a community of motivated go-getters; members who affect the highly positive environment of the group dynamic by constant moaning and negativity may be asked to leave. They will get ONE warning to do so, then – if the behaviour continues - they will be asked to leave with no refund.</p>
+
+                <p><strong>11. CONFIDENTIALITY AND SENSITIVE INFORMATION:</strong> As part of this course, students have access to a Facebook Support Group as well as live group video calls, held weekly for the duration of 12 weeks from the Membership Start Date (date of enrolment). In the Facebook Support Group and during the weekly calls, confidential and sensitive information may be shared by the students. All students understand and agree that all and any information shared in the Facebook group or during the support calls is to be treated as sensitive and confidential.</p>
+
+                <p><strong>12. LICENCE TO CONTENT:</strong> You are purchasing one licence for personal viewing and implementation of the material in the course. If you use the material for any other purpose other than personal study, (such making derivative materials, selling, sharing with others who are not course members, training others in the course system, displaying it publicly or on the internet, and/or sharing your login credentials), you will be in full violation of copyright laws and contract law. Licenses for these items are available for purchase, starting at $10,000. If you choose to take these actions, you will be notified and billed accordingly.</p>
+
+                <p><strong>13. CHANGES TO THESE TERMS:</strong> These Terms of Purchase are subject to change without prior notice. In the event that any changes are made, the new terms supersede old terms with immediate effect. As and when revisions happen, the students will be notified and the revised Terms & Conditions shall be posted on the Members Area immediately.</p>
+
+                <p><strong>14. DISCLAIMER AND LIMITATION OF WARRANTY:</strong> You are in the best position to understand your unique circumstances, and you understand and agree that a general informational course such as this cannot be completely tailored to every single person. This course is not a substitute for financial, legal, medical, mental health, or other type of advice that is needed from a qualified professional. You are advised to use your best judgment and seek the advice of such professionals in implementing the principles of this course. As the course success is very much reliant on the participant’s self -discipline and action taken on the content shared, no guarantees are made as to the outcome for the use of this course.</p>
+
+                <p><strong>15. WAIVER OF LIABILITY AND GIVERNING LAW:</strong> This contract is governed by UK Law without regard to its conflicts of laws principles. You agree without reservation to personal jurisdiction in the UK courts in the event of dispute concerning this agreement or your use of this course. This Membership site and course, including any content or information contained within it, is provided “as is” , with all faults, with no representations or warrantied of any kind, either expressed or implied. This includes but is not limited to – the implied warranties of merchantability, fitness for a particular purpose, and non infringement. You assume total responsibility and risk for your use of this website / course, and any related services or recommended subcontractors or hyperlinked websites.</p>
+
+                <p><strong>16. DAMAGES:</strong> Scaling with Systems, its affiliates, owners and sponsors are neither responsible nor liable for any direct, indirect, incidental, consequential, special, exemplary or other damages arising out of correlating in any way to the site, the course, any site-related services, content, or information contained within the site, and / or any hyperlinked website or recommended subcontractor. Your sole remedy for dissatisfaction with the course, site, site-related services, and / or any hyperlinked websites is to stop using the sites and / or those services. In any event that damages are awarded, they are limited to the contract price. No lawyer’s fees, costs, statutory damages will be paid.</p>
+            </div>
+            
+            <!-- Footer repeated for Terms view consistency -->
+            <div class="mt-12 pt-10 border-t border-charcoal/5 text-center">
+                <p class="text-[9px] uppercase tracking-widest opacity-40 text-center text-charcoal">Copyright 2025 - "Dina Shakir Coaching" - All Rights Reserved</p>
+            </div>
+        </div>
+    </section>
+  </div>
+
+  <script>
+    function showView(viewName) {
+        document.querySelectorAll('.view').forEach(view => {
+            view.classList.remove('active');
+        });
+        const targetView = document.getElementById(viewName + '-view');
+        if(targetView) targetView.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
