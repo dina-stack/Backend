@@ -30,6 +30,10 @@ app.get("/success", (req, res) => {
   res.sendFile(path.join(__dirname, "success.html"));
 });
 
+app.get("/success-upsell", (req, res) => {
+  res.sendFile(path.join(__dirname, "success-upsell.html"));
+});
+
 app.post("/pay", async (req, res) => {
   try {
     const { paymentMethodId, name, email, addWorkbook } = req.body;
