@@ -505,34 +505,32 @@
 
             // Send ID to backend for processing
             try {
-                const response = await fetch("/pay", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        paymentMethodId: paymentMethod.id,
-                        name: document.getElementById("name").value,
-                        email: document.getElementById("email").value,
-                        addWorkbook: document.getElementById("upsell-checkbox")?.checked || false
-                    }),
-                });
+    const response = await fetch("/pay", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            paymentMethodId: paymentMethod.id,
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            addWorkbook: document.getElementById("upsell-checkbox")?.checked || false
+        }),
+    });
 
-                const result = await response.json();
-               if (result.success) {
-    window.location.href = result.redirect;
+    const result = await response.json();
+
+    if (result.success) {
+        window.location.href = result.redirect;
+    } else {
+        errorElement.textContent = result.error || "Payment failed.";
+        btn.disabled = false;
+        btn.innerText = 'Complete My Order';
+    }
+
+} catch (err) {
+    console.error(err);
+    btn.disabled = false;
+    btn.innerText = 'Complete My Order';
 }
-                } else {
-                    errorElement.textContent = result.error || "Payment failed.";
-                    btn.disabled = false;
-                    btn.innerText = 'Complete My Order';
-                }
-
-            } catch (err) {
-                // In an actual browser environment, this handles connectivity errors
-                // For this demo, we provide a placeholder alert
-                console.error(err);
-                btn.disabled = false;
-                btn.innerText = 'Complete My Order';
-            }
         });
     </script>
 </body>
