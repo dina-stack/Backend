@@ -32,7 +32,7 @@ app.get("/success", (req, res) => {
 
 app.post("/pay", async (req, res) => {
   try {
-    const { paymentMethodId, name, email } = req.body;
+    const { paymentMethodId, name, email, addWorkbook } = req.body;
 
     if (!paymentMethodId || !email) {
       return res.json({
@@ -44,8 +44,15 @@ app.post("/pay", async (req, res) => {
     /* =========================
        STRIPE PAYMENT
     ========================= */
+    let amount = 3700;
+
+    if (addWorkbook === true) {
+     amount = 4700;
+  }
+
+
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: 3700,
+      amount: amount,
       currency: "usd",
 
       payment_method: paymentMethodId,
