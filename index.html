@@ -408,7 +408,7 @@
         /**
          * Initialize Stripe Split Elements
          */
-        const stripe = Stripe("pk_test_51SsJ5qBB5fIxLhtBsLAJib2UiRhBuuGF3RI17TA5XQOSUZ1fyjHEuJEQsUh0q9kpBQk5Wv7711xX9ZiOlgR2r7wG00r8y8tJqm");
+        const stripe = Stripe("pk_live_51Ok6K5BG8FVpgm37mfwhvBpszG0l6KYDNgIK6ymj3liiNE0rBbZlA1li46LNCHSduGVSqois0zUEjG7nKNeTY9nc00Y7w364ig");
         const elements = stripe.elements();
         
         const elementStyle = {
@@ -468,7 +468,7 @@ if (error) {
 }
  // Send ID to backend for processing
             try {
-                const response = await fetch("https://proactive-clarity-production.up.railway.app/pay", {
+                const response = await fetch("/pay", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -480,7 +480,7 @@ if (error) {
 
                 const result = await response.json();
                if (result.success) {
-    window.location.href = "https://proactive-clarity-production.up.railway.app/success";
+    window.location.href = "/success";
 } else {
     errorElement.textContent = result.error || "Payment failed.";
     btn.disabled = false;
