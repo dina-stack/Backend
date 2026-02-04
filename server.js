@@ -121,7 +121,17 @@ app.post("/pay", async (req, res) => {
       );
     }
 
-    res.json({ success: true });
+    if (addWorkbook === true) {
+  res.json({
+    success: true,
+    redirect: "/success-upsell"
+  });
+} else {
+  res.json({
+    success: true,
+    redirect: "/success"
+  });
+}
   } catch (err) {
     console.error("PAYMENT ERROR:", err.message);
     res.json({
