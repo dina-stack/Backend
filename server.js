@@ -10,8 +10,7 @@ const axios = require("axios");
 app.use(express.json());
 
 /* =========================
-   🔹 APPLE PAY DOMAIN FILE
-   (هاي الإضافة الجديدة)
+   APPLE PAY DOMAIN FILE
 ========================= */
 app.use(
   "/.well-known",
@@ -34,6 +33,10 @@ app.get("/success-upsell", (req, res) => {
   res.sendFile(path.join(__dirname, "success-upsell.html"));
 });
 
+/* =========================
+   PAYMENT ROUTE
+========================= */
+
 app.post("/pay", async (req, res) => {
   try {
     const { paymentMethodId, name, email, addWorkbook } = req.body;
@@ -45,50 +48,41 @@ app.post("/pay", async (req, res) => {
       });
     }
 
-    /* =========================
-       STRIPE PAYMENT
-    ========================= */
-    let amount = 3700;
+    /* ========= STRIPE ========= */
 
-    if (addWorkbook === true) {
-     amount = 4700;
-  }
-
+    const amount = addWorkbook ? 4700 : 3700;
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount,
+      amount,
       currency: "usd",
-
       payment_method: paymentMethodId,
       confirm: true,
-
       automatic_payment_methods: {
         enabled: true,
         allow_redirects: "never",
       },
-
       receipt_email: email,
-      description: "Freedom Offer Formula",
+      description: addWorkbook
+        ? "Freedom Offer Formula + Workbook"
+        : "Freedom Offer Formula",
     });
 
     if (paymentIntent.status !== "succeeded") {
       return res.json({
         success: false,
         error: "Payment not completed",
-        status: paymentIntent.status,
       });
     }
 
-    /* =========================
-       ACTIVECAMPAIGN (NON BLOCKING)
-    ========================= */
+    /* ========= ACTIVECAMPAIGN ========= */
+    // non blocking (حتى لو فشل ما يكسر الدفع)
 
     try {
       const contactResponse = await axios.post(
         "https://dinashakir.api-us1.com/api/3/contact/sync",
         {
           contact: {
-            email: email,
+            email,
             firstName: name,
           },
         },
@@ -118,6 +112,27 @@ app.post("/pay", async (req, res) => {
           },
         }
       );
+
+      if (addWorkbook) {
+        await axios.post(
+          "https://dinashakir.api-us1.com/api/3/contactTags",
+          {
+            contactTag: {
+              contact: contactId,
+              tag: "5",
+            },
+          },
+          {
+            headers: {
+              "Api-Token": process.env.ACTIVE_CAMPAIGN_TOKEN,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        console.log("Upsell Tag added");
+      }
+
     } catch (acError) {
       console.error(
         "ActiveCampaign error:",
@@ -125,22 +140,21 @@ app.post("/pay", async (req, res) => {
       );
     }
 
-    if (addWorkbook === true) {
-  res.json({
-    success: true,
-    redirect: "/success-upsell"
-  });
-} else {
-  res.json({
-    success: true,
-    redirect: "/success"
-  });
-}
+    /* ========= SUCCESS ========= */
+
+    return res.json({
+      success: true,
+      redirect: addWorkbook
+        ? "/success-upsell"
+        : "/success",
+    });
+
   } catch (err) {
     console.error("PAYMENT ERROR:", err.message);
-    res.json({
+
+    return res.json({
       success: false,
-      error: err.message,
+      error: "Server error",
     });
   }
 });
@@ -150,7 +164,7 @@ app.post("/pay", async (req, res) => {
 ========================= */
 
 const PORT = process.env.PORT || 8080;
+
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
-
