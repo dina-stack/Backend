@@ -12,24 +12,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --burgundy: #6B1D28;
-            --muted-blue-grey: #D6DDE0;
-            --deep-plum: #4A2C3F;
-            --warm-beige: #F5F1EA;
-            --off-white: #FCFAF7;
-            --charcoal: #2D2926;
-            --upsell-bg: #FFF9E1;
-            --upsell-border: #F3E5AB;
-        }
+    --burgundy: #6B1D28;
+    --muted-blue-grey: #D6DDE0;
+    --deep-plum: #4A2C3F;
+    --warm-beige: #F5F1EA;
+    --off-white: #FCFAF7;
+    --charcoal: #2D2926;
+    --upsell-bg: #FFF9E1;
+    --upsell-border: #F3E5AB;
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--warm-beige);
-            color: var(--charcoal);
-            scroll-behavior: smooth;
-        }
+    /* ===== TYPOGRAPHY SCALE ===== */
+
+    --text-base-desktop: 20px;
+    --text-base-mobile: 14px;
+
+    --h1-desktop: 40px;
+    --h1-mobile: 28px;
+
+    --h2-size: 30px;
+    --body-large: 20px;
+    --body-normal: 16px;
+    --tiny-desktop: 10px;
+}
+
+
+       body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--warm-beige);
+    color: var(--charcoal);
+    scroll-behavior: smooth;
+    font-size: var(--text-base-desktop);
+}
+@media (max-width:768px){
+    body{
+        font-size: var(--text-base-mobile);
+    }
+}
+
 
         h1, h2, h3, h4, .serif {
+            h1{
+    font-size: var(--h1-desktop);
+}
+
+@media(max-width:768px){
+    h1{
+        font-size: var(--h1-mobile);
+    }
+}
+
+h2{
+    font-size: var(--h2-size);
+}
+
+p{
+    font-size: var(--body-normal);
+}
+
             font-family: 'Playfair Display', serif;
         }
 
@@ -37,25 +76,33 @@
         .text-burgundy { color: var(--burgundy); }
         .bg-burgundy { background-color: var(--burgundy); }
         
-        .btn-primary {
-            background-color: var(--burgundy);
-            color: #FFFFFF; /* Pure white text for the button */
-            padding: 1.25rem 2.5rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-        }
+      .btn-primary {
 
-        .btn-primary:hover {
-            opacity: 0.95;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -10px rgba(107, 29, 40, 0.5);
-        }
+    background-color: var(--burgundy);
+    color: #FFFFFF;
+
+    padding: 1.6rem 3.2rem;   /* كان أصغر */
+    
+    font-size: 1rem;          /* أكبر لكن مش مبالغ */
+    font-weight: 700;        /* هذا أهم تعديل */
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    transition: all 0.25s ease;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+
+    box-shadow: 0 18px 40px rgba(107,29,40,0.18);
+}
+
+       .btn-primary:hover {
+
+    transform: translateY(-4px);
+    box-shadow: 0 28px 60px rgba(107,29,40,0.28);
+
+}
 
         .section-padding {
             padding: 4rem 1.5rem; /* Reduced from 6rem */
@@ -122,7 +169,7 @@
                     </div>
 
                     <div class="mt-2">
-                        <img src="https://i.ibb.co/XfFZsRMT/Freedom-Offer-Formula-2.png" alt="Freedom Offer Formula" class="mx-auto w-full max-w-[350px]">
+                        <img src="https://i.ibb.co/27Tykj3C/Freedom-Offer-Formula-4.png" alt="Freedom Offer Formula" class="mx-auto w-full max-w-[440px]">
                     </div>
                 </div>
             </section>
@@ -218,11 +265,41 @@
                                 <!-- 8. Price & CTA (PRECISION UPDATE: MASSIVE PRICE DISPLAY) -->
                                 <div class="space-y-2 pt-12 border-t border-charcoal/10 text-center">
                                     <div class="flex flex-col items-center justify-center">
-                                        <p class="text-xl md:text-2xl uppercase tracking-[0.2em] opacity-60 line-through mb-0">Regular price: $97</p>
-                                        <div class="flex items-center gap-4">
-                                            <span class="text-2xl serif italic text-burgundy opacity-80">Today:</span>
-                                            <p class="text-7xl md:text-9xl font-serif font-bold text-burgundy tracking-tighter">$37</p>
-                                        </div>
+                                        <div style="text-align:center; margin-top:10px;">
+
+    <div style="
+        font-family:'Inter', sans-serif;
+        font-size:42px;
+        font-weight:700;
+        letter-spacing:-1px;
+    ">
+
+        <span style="
+            text-decoration:line-through;
+            color:#000;
+            opacity:.55;
+            margin-right:10px;
+        ">
+            $97
+        </span>
+
+        <span style="color:#6B1D28;">
+            $37
+        </span>
+
+    </div>
+
+    <div style="
+        margin-top:6px;
+        font-size:14px;
+        letter-spacing:1px;
+        opacity:.6;
+    ">
+        Regular price → Today
+    </div>
+
+</div>
+
                                     </div>
 
                                     <button onclick="scrollToForm()" class="btn-primary py-5 px-12 text-sm w-full md:w-auto shadow-2xl mt-6">Stop Talking, I’m in!</button>
@@ -261,41 +338,150 @@
                         <div class="lg:col-span-2">
                             <!-- Removed 'sticky top-8' class per user request -->
                             <div id="payment-area" class="bg-white p-6 md:p-10 shadow-2xl rounded-sm border border-charcoal/5 relative">
-                                <!-- Price Badge with White Text -->
-                                <div class="absolute -top-4 -right-4 bg-burgundy text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rotate-3 shadow-lg">
-                                    Only $37
-                                </div>
-                                <div class="mb-8 pb-6 border-b border-charcoal/5 text-left">
-                                    <h4 class="text-xs uppercase tracking-widest mb-4 opacity-50 font-bold text-left">Order Summary</h4>
-                                    <div class="flex justify-between items-center text-left mb-6">
-                                        <span class="text-sm font-semibold">Freedom Offer Formula™ Ebook</span>
-                                        <span class="text-2xl font-serif text-burgundy font-bold">$37</span>
-                                    </div>
+                             
+<!-- PRICE HEADLINE -->
 
-                                    <!-- PRECISION UPDATE: MOVE BONUSES TO SUMMARY AREA -->
-                                    <div class="space-y-3">
-                                        <div class="value-anchor-box">
-                                            <p class="text-[10px] font-bold text-burgundy uppercase tracking-wider mb-1">✨ INCLUDED: BONUS #1</p>
-                                            <p class="text-[11px] font-semibold mb-1 text-charcoal">The Freedom Offer™ Discovery Prompts</p>
-                                            <p class="text-[10px] leading-tight opacity-70">Guided prompts to help you uncover the exact skill, story, or strength you can turn into a sellable offer.</p>
-                                        </div>
-                                        <div class="value-anchor-box">
-                                            <p class="text-[10px] font-bold text-burgundy uppercase tracking-wider mb-1">✨ INCLUDED: BONUS #2</p>
-                                            <p class="text-[11px] font-semibold mb-1 text-charcoal">The Offer-to-Sale Roadmap</p>
-                                            <p class="text-[10px] leading-tight opacity-70">A visual roadmap showing exactly what to do after your offer is clear to secure your first sale.</p>
-                                        </div>
-                                    </div>
+<div style="text-align:center; margin-bottom:28px;">
+
+    <div style="
+        font-size:28px;
+        font-weight:700;
+        color:#6B1D28;
+        font-family:'Inter', sans-serif;
+    ">
+        Only 
+        <span style="
+            text-decoration:line-through;
+            color:#000;
+            opacity:.75;
+            margin:0 6px;
+        ">
+            $97
+        </span>
+
+        <span style="color:#6B1D28;">
+            $37 Today
+        </span>
+    </div>
+
+    <div style="
+        font-size:18px;
+        margin-top:6px;
+        color:#000;
+        font-weight:500;
+    ">
+        (Save $60 Today)
+    </div>
+
+    <p style="
+        margin-top:14px;
+        font-size:16px;
+        line-height:1.5;
+        max-width:420px;
+        margin-left:auto;
+        margin-right:auto;
+    ">
+       Unlock <strong style="color:#6B1D28;">The Freedom Offer Formula™</strong>
+and instantly access 
+<span style="color:#6B1D28; font-weight:700; letter-spacing:.5px;">
+2 BONUSES
+</span>
+so you’re not wasting weeks second-guessing yourself.
+
+    </p>
+
+</div>
+
+    <div class="flex justify-between items-center mb-2">
+        <div>
+
+        <div>
+        
+</div> <!-- 🔴 مهم جداً -->
+
+
+          
+</div>
+
+                                   <div style="
+background:#faf8f5;
+padding:22px;
+border-radius:8px;
+margin-bottom:24px;
+border:1px solid rgba(0,0,0,0.06);
+">
+
+    <div style="
+    font-weight:800;
+    color:#6B1D28;
+    font-size:15px;
+    letter-spacing:.8px;
+    margin-bottom:14px;
+    text-transform:uppercase;
+">
+    Only <span style="font-weight:900;">2 BONUSES</span> Included
+</div>
+
+    <!-- BONUS 1 -->
+    <div style="
+        font-weight:600;
+        font-size:14px;
+        margin-bottom:10px;
+        display:flex;
+        align-items:flex-start;
+        gap:8px;
+    ">
+        <span style="color:#E6B800;">★</span>
+        Bonus #1: Your First Sale Game Plan (Without Overcomplicating It)
+    </div>
+
+    <!-- BONUS 2 -->
+    <div style="
+        font-weight:600;
+        font-size:14px;
+        display:flex;
+        align-items:flex-start;
+        gap:8px;
+    ">
+        <span style="color:#E6B800;">★</span>
+        Bonus #2: Value Stack Template (so your offer becomes a MAGNET)
+    </div>
+
+</div>
+
                                 </div>
                                 
                                 <form id="payment-form" class="space-y-6 text-left">
                                     <div>
-                                        <label class="text-[10px] uppercase tracking-widest font-bold block mb-2 opacity-60">Step 1: Contact Information</label>
+                                     <label style="
+font-size:14px;
+font-weight:500;
+letter-spacing:1.2px;
+text-transform:uppercase;
+display:block;
+margin-bottom:8px;
+color:#000;
+opacity:.65;
+">
+
+Step 1: Contact Information</label>
                                         <input type="text" id="name" class="w-full bg-off-white border border-charcoal/10 px-4 py-3 focus:outline-none focus:border-burgundy transition-colors text-sm" placeholder="Full Name" required>
                                         <input type="email" id="email" class="w-full bg-off-white border border-charcoal/10 px-4 py-3 focus:outline-none focus:border-burgundy mt-3 transition-colors text-sm" placeholder="Email Address" required>
                                     </div>
                                     
-                                    <div class="space-y-4 text-left">
-                                        <label class="text-[10px] uppercase tracking-widest font-bold block mb-2 opacity-60">Step 2: Card Details</label>
+                                    <div class="text-left">
+  <label style="
+font-size:14px;
+font-weight:500;
+letter-spacing:1.2px;
+text-transform:uppercase;
+display:block;
+margin-bottom:8px;
+color:#000;
+opacity:.65;
+">
+
+Step 2: Card Details</label>
                                         
                                         <!-- Card Number Input -->
                                         <div>
@@ -316,27 +502,70 @@
                                         </div>
                                         
                                         <!-- Stripe Error Feedback -->
-                                        <div id="error-message" class="text-[10px] text-red-600 mt-2 font-medium"></div>
+                                        <div id="error-message" style="font-size:12px" text-red-600 mt-2 font-medium"></div>
                                     </div>
 
                                     <!-- PRECISION UPDATE: THE PROFESSIONAL UPSELL BOX -->
-                                    <div class="bg-[#FFF9E1] border-2 border-[#F3E5AB] p-5 rounded-sm my-8">
-                                        <img src="https://i.ibb.co/MDcPhDK7/Untitled-design-1.png"
+                                    <div class="bg-[#FFF9E1] border-2 border-[#F3E5AB] p-7 rounded-sm my-10">
+
+                                        <img src="https://i.ibb.co/mCVRDJZm/Device-Mmockups-1.png"
+
 alt="Freedom Workbook"
-style="display:block; margin: 0 auto 15px auto; max-width: 220px; border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);">
+style="
+display:block;
+margin:0 auto 22px auto;
+max-width:320px;
+width:100%;
+"
+ border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);">
 
                                         
-                                        <h5 class="text-sm font-bold text-burgundy mb-2 text-center uppercase tracking-tight">One Time Offer: The Freedom Workbook</h5>
-                                        <p class="text-[11px] leading-relaxed mb-4 text-center text-charcoal/80">
-                                            The perfect companion to the Formula. This interactive workbook helps you map out your entire offer strategy in real-time.
-                                        </p>
-                                        
+                                        <h5 class="text-lg font-semibold
+ text-burgundy mb-2 text-center uppercase tracking-tight">[HIGHLY RECOMMENDED] Important:</h5>
+                                        <p style="
+font-size:14px;
+line-height:1.6;
+margin-bottom:18px;
+text-align:center;
+color:#2D2926;
+">
+
+<span style="
+color:#6B1D28;
+font-weight:700;
+letter-spacing:.3px;
+">
+[HIGHLY RECOMMENDED]
+</span>
+
+Important: If you want to save yourself hours of overthinking, rewriting, and second-guessing, add the Freedom Offer Workbook™ to your order.
+
+<br><br>
+
+When you snag this, you will get the exact guided prompts and exercises from the guide in one clean, printable space so you can actually do the work instead of rereading and highlighting the same pages.
+
+<br><br>
+
+Working from the workbook makes it <strong>SO much easier</strong> to walk through every framework step-by-step.
+
+<br><br>
+
+You just print these pages, and start!
+
+<br><br>
+
+<strong style="color:#6B1D28;">
+[$10 one-time add-on]
+</strong>
+
+</p>
+
                                         <div class="bg-white/50 p-4 border border-[#F3E5AB] rounded-sm">
                                             <label class="flex items-center gap-3 cursor-pointer group">
                                                 <input type="checkbox" id="upsell-checkbox" class="accent-burgundy w-5 h-5 shrink-0">
                                                 <div class="flex flex-col">
-                                                    <span class="text-xs font-bold text-charcoal group-hover:text-burgundy transition-colors uppercase tracking-tight">Yes! Add to my order for only $10</span>
-                                                    <span class="text-[10px] opacity-60 line-through">Regular Price: $47</span>
+                                                    <span class="text-sm font-semibold text-charcoal group-hover:text-burgundy transition-colors uppercase tracking-tight">Yes! Add to my order for only $10</span>
+                                                    <span style="font-size:12px" opacity-60 line-through">Regular Price: $47</span>
                                                 </div>
                                             </label>
                                         </div>
@@ -345,14 +574,75 @@ style="display:block; margin: 0 auto 15px auto; max-width: 220px; border-radius:
                                     <div class="pt-2 text-left">
                                         <label class="flex items-start gap-3 cursor-pointer group mb-6">
                                             <input type="checkbox" class="mt-1 accent-burgundy shrink-0" required>
-                                            <span class="text-[10px] leading-relaxed opacity-60 group-hover:opacity-100 transition-opacity">
+                                            <span style="font-size:15px; line-height:1.6;" class="opacity-80 group-hover:opacity-100 transition-opacity"">
                                                 I agree to the Freedom Offer Formula™ <button type="button" onclick="showView('terms')" class="underline">Terms of Purchase</button> and Privacy Policy.
                                             </span>
                                         </label>
+                                     <div style="
+background:#faf8f5;
+padding:20px;
+border-radius:8px;
+margin-bottom:18px;
+border:1px solid rgba(0,0,0,0.06);
+">
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:6px;
+">
+
+<span style="
+font-size:15px;
+letter-spacing:.5px;
+">
+Order Total
+</span>
+
+<span id="old-price"
+style="
+text-decoration:line-through;
+opacity:.85;
+font-size:18px;
+font-weight:500;
+color:#000;
+">
+$97
+</span>
+
+</div>
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
+
+<span style="
+font-size:18px;
+font-weight:600;
+">
+Today
+</span>
+
+<span id="total-price"
+style="
+font-size:34px;
+font-weight:700;
+color:#6B1D28;
+letter-spacing:-.5px;
+">
+$37
+</span>
+
+</div>
+
+</div>
+
+
                                         <button type="submit" class="btn-primary w-full py-5 text-sm shadow-xl font-bold">Complete My Order</button>
-                                        <p class="text-[10px] text-center opacity-40 mt-4 flex items-center justify-center gap-2">
-                                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                                            Secure 256-bit SSL Encrypted Checkout
+                                        
                                         </p>
                                     </div>
                                 </form>
@@ -417,7 +707,7 @@ style="display:block; margin: 0 auto 15px auto; max-width: 220px; border-radius:
     <footer class="bg-off-white pt-10 pb-10 border-t border-charcoal/5 text-center">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
             <div class="mb-4 text-center">
-                <button onclick="showView('terms')" class="text-[10px] uppercase tracking-widest font-bold opacity-60 hover:text-burgundy transition-colors text-center">Terms & Conditions</button>
+                <button onclick="showView('terms')" style="font-size:12px" uppercase tracking-widest font-bold opacity-60 hover:text-burgundy transition-colors text-center">Terms & Conditions</button>
             </div>
             <p class="text-[9px] uppercase tracking-widest opacity-40 text-center">Copyright 2025 - "Dina Shakir Coaching" - All Rights Reserved</p>
         </div>
@@ -479,6 +769,26 @@ style="display:block; margin: 0 auto 15px auto; max-width: 220px; border-radius:
         cardCvc.mount('#card-cvc-element');
 
         const form = document.getElementById("payment-form");
+/* ===== TOTAL PRICE LOGIC ===== */
+
+const upsellCheckbox = document.getElementById("upsell-checkbox");
+const totalPrice = document.getElementById("total-price");
+const oldPrice = document.getElementById("old-price");
+
+upsellCheckbox.addEventListener("change", () => {
+
+    if (upsellCheckbox.checked) {
+
+        totalPrice.innerText = "$47";
+        oldPrice.innerText = "$144";
+
+    } else {
+
+        totalPrice.innerText = "$37";
+        oldPrice.innerText = "$97";
+    }
+});
+
 
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
