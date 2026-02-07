@@ -25,6 +25,10 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
+app.get("/offer-framework", (req, res) => {
+  res.sendFile(path.join(__dirname, "offer-framework.html"));
+});
+
 app.get("/success", (req, res) => {
   res.sendFile(path.join(__dirname, "success.html"));
 });
@@ -32,6 +36,67 @@ app.get("/success", (req, res) => {
 app.get("/success-upsell", (req, res) => {
   res.sendFile(path.join(__dirname, "success-upsell.html"));
 });
+app.get("/success-framework", (req, res) => {
+  res.sendFile(path.join(__dirname, "success-framework.html"));
+});
+
+/* =========================
+   FRAMEWORK LEAD
+========================= */
+
+app.post("/framework-lead", async (req, res) => {
+  try {
+
+    const { email, name } = req.body;
+
+    const contactResponse = await axios.post(
+      "https://dinashakir.api-us1.com/api/3/contact/sync",
+      {
+        contact: {
+          email,
+          firstName: name,
+        },
+      },
+      {
+        headers: {
+          "Api-Token": process.env.ACTIVE_CAMPAIGN_TOKEN,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const contactId = contactResponse.data.contact.id;
+
+    await axios.post(
+      "https://dinashakir.api-us1.com/api/3/contactLists",
+      {
+        contactList: {
+          list: 16,
+          contact: contactId,
+          status: 1,
+        },
+      },
+      {
+        headers: {
+          "Api-Token": process.env.ACTIVE_CAMPAIGN_TOKEN,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    res.json({ success: true });
+
+  } catch (error) {
+
+    console.error(
+      "Framework lead error:",
+      error.response?.data || error.message
+    );
+
+    res.json({ success: false });
+  }
+});
+
 
 /* =========================
    PAYMENT ROUTE
