@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>You're In!</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --beige:#f6f1ea;
+  --burgundy:#6B1D28;
+  --text:#000;
+  --muted:rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:var(--beige);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  color:var(--text);
+}
+
+.card{
+
+  width:min(640px,92%);
+  background:#fff;
+  padding:48px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+.logo{
+  height:58px;
+  margin-bottom:24px;
+}
+
+h1{
+  font-family:"Playfair Display", serif;
+  font-size: clamp(42px,5vw,64px);
+  margin:0;
+  color:var(--burgundy);
+}
+
+.lead{
+  margin-top:18px;
+  font-size:20px;
+  font-weight:600;
+}
+
+.steps{
+  margin-top:32px;
+  text-align:left;
+}
+
+.step{
+  display:flex;
+  gap:14px;
+  margin-bottom:18px;
+  font-size:16px;
+}
+
+.number{
+  min-width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--burgundy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+
+.tip{
+
+  margin-top:30px;
+  padding:18px;
+  border-radius:12px;
+  background:rgba(107,29,40,.06);
+  font-size:14px;
+  color:var(--muted);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<img class="logo"
+src="https://i.ibb.co/sdwGQ8c8/LOGO-New-Title.png">
+
+<h1>You're In.</h1>
+
+<div class="lead">
+Your framework is on its way to your inbox.
+</div>
+
+<div class="steps">
+
+<div class="step">
+<div class="number">1</div>
+<div>
+Check your email in the next 2–3 minutes.
+</div>
+</div>
+
+<div class="step">
+<div class="number">2</div>
+<div>
+Search for an email from <strong>Dina Shakir</strong>.
+</div>
+</div>
+
+<div class="step">
+<div class="number">3</div>
+<div>
+If you don’t see it — check spam or promotions.
+</div>
+</div>
+
+</div>
+
+<div class="tip">
+For the best experience, move the email to your primary inbox so you don’t miss what’s coming next.
+</div>
+
+</div>
+
+</body>
+</html>
+
