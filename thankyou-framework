@@ -1,8 +1,273 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>You’re In</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --beige:#f6f1ea;
+  --burgundy:#6b1e2b;
+  --burgundy-soft:#8a2a3b;
+  --text:#000;
+  --muted:rgba(0,0,0,.55);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:var(--beige);
+}
+
+/* HEADER */
+
+.header{
+  width:min(1200px,94%);
+  margin:auto;
+  padding:28px 0 0;
+}
+
+.logo{
+  height:52px;
+}
+
+/* WRAPPER */
+
+.wrapper{
+  max-width:1200px;
+  margin:auto;
+  padding:24px 20px 40px;
+
+  text-align:center;
+  margin-bottom:40px;
+}
+
+/* HEADLINE */
+
+h1{
+   font-family:"Playfair Display", serif;
+  font-weight:700;   /* هذا المهم */
+  font-size: clamp(44px,5vw,70px);
+  color:var(--burgundy);
+  margin:0;          /* نشيل المسافات */
+  line-height:1.05;
+}
+
+.subtext{
+  margin-top:8px;
+  font-size:22px;
+  font-weight:600;
+}
+
+.subtext span{
+  display:block;
+  font-size:15px;
+  margin-top:6px;
+  color:var(--muted);
+  font-weight:500;
+}
+
+
+/* ---------- PREMIUM PROGRESS BAR ---------- */
+
+.progress-wrapper{
+  margin-top:24px;
+}
+
+
+/* Track */
+
+.progress-track{
+  width:100%;
+   height:44px;
+  border-radius:999px;
+  padding:8px;
+
+  background:
+  linear-gradient(#ffffff,#fbfbfb);
+
+  box-shadow:
+  inset 0 2px 6px rgba(0,0,0,.06),
+  0 12px 30px rgba(0,0,0,.05);
+
+  position:relative;
+}
+
+/* Fill */
+
+.progress-fill{
+  height:100%;
+  width:50%;
+  border-radius:999px;
+  position:relative;
+  overflow:hidden;
+
+  background:
+  linear-gradient(
+    120deg,
+    #059669,
+    #10B981,
+    #34D399
+  );
+
+  box-shadow:
+  0 6px 18px rgba(16,185,129,.35),
+  inset 0 1px 3px rgba(255,255,255,.25);
+}
+
+/* Moving highlight */
+
+.progress-fill::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255,255,255,.25) 50%,
+    transparent 70%
+  );
+
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes shimmer{
+   from{transform:translateX(-100%);}
+  to{transform:translateX(100%);}
+}
+
+/* TEXT */
+
+.progress-text{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  font-weight:600;
+  font-size:16px;
+}
+
+.step{
+  width:50%;
+  padding-left:28px;
+  text-align:left;
+}
+
+.step.complete{
+  color:white;
+}
+
+.step.pending{
+  color:#000;
+  opacity:.75;
+}
+
+
+/* DIVIDER */
+
+.divider{
+  margin:100px auto 0;
+  height:1px;
+  width:100%;
+  background:rgba(0,0,0,.08);
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .progress-track{
+    height:48px;
+  }
+
+  .progress-text{
+    font-size:14px;
+  }
+
+}
+.no-thanks{
+ background:none;
+  border:none;
+  padding:0;
+font-style: italic;
+
+   margin-top:50px;
+   margin-bottom:20px;
+
+
+  font-size:16px;   /* أكبر */
+  font-weight:500;
+
+  color:rgba(0,0,0,.45);
+  opacity:.65;
+
+  cursor:pointer;
+  text-decoration:underline;
+
+  transition:all .2s ease;
+}
+
+.no-thanks:hover{
+  opacity:1;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div class="wrapper">
+
+<h1>You’re in. Your guide is on the way.</h1>
+
+<div class="subtext">
+Check your inbox in 1–2 minutes
+<span>(remember to check spam or promotions)</span>
+</div>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-wrapper">
+
+<div class="progress-track">
+
+  <div class="progress-fill"></div>
+
+  <div class="progress-text">
+
+    <div class="step complete">
+      ✓ Step 1 — Free guide download
+    </div>
+
+    <div class="step pending">
+      Step 2 — Build Your Freedom Offer Today!
+
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+</div>
+
+    
     <title>Checkout | The Freedom Offer Formula™</title>
     <!-- Stripe Library -->
     <script src="https://js.stripe.com/v3/"></script>
@@ -149,7 +414,8 @@ p{
         }
     </style>
 </head>
-<body class="antialiased text-left">
+
+<body class="antialiased">
 
     <!-- Header: Logo removed per request -->
     <main id="main-content">
@@ -159,7 +425,7 @@ p{
             
             <!-- Headline Section adjusted -->
             <section class="bg-off-white pt-8 md:pt-12"> <!-- Reduced top padding -->
-                <div class="max-w-6xl mx-auto px-4 md:px-6 text-center">
+                <div class="max-w-5xl mx-auto px-4 md:px-6 text-center">
                     <!-- Reduced Headline Size -->
                     <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-3 text-burgundy font-sans uppercase tracking-tight max-w-5xl mx-auto">Turn who you already are into an offer people actually want to buy</h1>
                     
@@ -168,18 +434,18 @@ p{
                         <p class="text-lg md:text-2xl font-medium text-charcoal/90 font-sans leading-relaxed italic md:whitespace-nowrap">Stop watching everyone else make money online. <strong>Now it’s your turn</strong></p>
                     </div>
 
-                    <div class="mt-2">
-                        <img src="https://i.ibb.co/27Tykj3C/Freedom-Offer-Formula-4.png" alt="Freedom Offer Formula" class="mx-auto w-full max-w-[440px]">
-                    </div>
+            
                 </div>
             </section>
 
-            <section class="section-padding pt-6 md:pt-8 bg-off-white min-h-screen"> <!-- Reduced top padding -->
-                <div class="max-w-6xl mx-auto px-4 md:px-6">
-                    <div class="grid lg:grid-cols-5 gap-10 md:gap-16">
+            <section class="section-padding pt-6 md:pt-8 bg-off-white"> 
+                <div class="checkout-container">
+<!-- Reduced top padding -->
+                <div class="max-w-5xl mx-auto px-6 text-center">
+                    <div class="max-w-5xl mx-auto text-center">
                         
                         <!-- Left Section: Content and Images -->
-                        <div class="lg:col-span-3">
+                        <div>
                             
                             <div class="mb-6 text-center">
                                 <h2 class="text-3xl md:text-5xl font-serif text-burgundy mb-2">The Freedom Offer Formula™</h2>
@@ -198,7 +464,8 @@ p{
                             </div>
 
                             <!-- Detailed Sales Copy Sections - REPLACED CONTENT STARTS HERE -->
-                            <div class="mt-8 pt-6 border-t border-charcoal/10 space-y-8 prose-text"> <!-- Reduced padding and spacing -->
+                            <div class="mt-8 pt-6 space-y-8 prose-text">
+ <!-- Reduced padding and spacing -->
                                 
                                 <!-- 1. Headline -->
                                 <div>
@@ -206,61 +473,68 @@ p{
                                     <h3 class="text-2xl md:text-3xl font-serif font-bold text-burgundy mb-4">Here’s What I Show You:</h3> <!-- Reduced margin -->
                                     
                                     <!-- 2. List -->
-                                    <ul class="space-y-4 text-charcoal/80"> <!-- Reduced spacing between items -->
-                                        <li class="flex items-start gap-3">
-                                            <svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                            <span><strong>My step-by-step process for figuring out what you can actually sell</strong> using your skills, experiences, and lived lessons (so you stop overthinking and finally move forward).</span>
-                                        </li>
-                                        <li class="flex items-start gap-3">
-                                            <svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                            <span>
-<strong>My proven method for packaging your idea into an offer people actually want to buy,</strong>
-without chasing trends or copying everyone else.
+                                 <ul class="space-y-4 text-charcoal/80 text-left">
+
+<li class="flex items-start gap-3">
+<svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+</svg>
+<span>
+<strong>My step-by-step process for figuring out what you can actually sell</strong> using your skills, experiences, and lived lessons (so you stop overthinking and finally move forward).
 </span>
-                                        </li>
-                                        <li class="flex items-start gap-3">
-                                            <svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                            <span><strong>My simple framework for pricing your offer with confidence</strong> so your offer feels good for you and like a total no-brainer for your audience (no more “am I charging too much?” stress).</span>
-                                        </li>
-                                        <li class="flex items-start gap-3">
-                                            <svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                            <span><strong>How to position and explain your offer so people actually “get it”</strong>, so you stop overthinking what to say and start talking about your offer in a way that feels natural, clear, and easy for someone to say yes to.</span>
-                                        </li>
-                                        <li class="flex items-start gap-3">
-                                            <svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                            <span><strong>My full breakdown of how to start showing up online with clarity</strong> so your content stops feeling random and starts pointing people toward your offer naturally – without posting more, or forcing consistency.</span>
-                                        </li>
-                                    </ul>
-                                </div>
+</li>
 
-                                <!-- 3. Text CTA & Button -->
-                                <div class="bg-charcoal/5 p-6 rounded-sm text-center my-6 border-t border-charcoal/10 pt-6"> <!-- Reduced padding and margin -->
-                                    <!-- Increased text size -->
-                                    <p class="font-bold text-xl md:text-2xl text-burgundy mb-3">Click here if you want to turn the time you’re already spending on IG into income 👇</p> <!-- Reduced margin-bottom -->
-                                    <button onclick="scrollToForm()" class="btn-primary py-4 px-8 text-xs w-full md:w-auto shadow-lg">I’m So Ready!</button>
-                                </div>
+<li class="flex items-start gap-3">
+<svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+</svg>
+<span>
+<strong>My proven method for packaging your idea into an offer people actually want to buy,</strong> without chasing trends or copying everyone else.
+</span>
+</li>
 
-                                <!-- 5. Image (Updated and resized) -->
-                                <div class="my-6 text-center border-t border-charcoal/10 pt-6"> <!-- Reduced margin and padding -->
-                                    <img src="https://i.ibb.co/8DSC51cC/IMG-9639.jpg" alt="Dina Shakir" class="w-1/2 mx-auto border-none shadow-none rounded-none">
-                                </div>
+<li class="flex items-start gap-3">
+<svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+</svg>
+<span>
+<strong>My simple framework for pricing your offer with confidence</strong> so your offer feels good for you and like a total no-brainer for your audience (no more “am I charging too much?” stress).
+</span>
+</li>
 
-                                <!-- 6. Empathy -->
-                                <div class="space-y-4 pt-6 border-t border-charcoal/10"> <!-- Reduced spacing and padding -->
-                                    <h4 class="text-2xl font-serif font-bold text-burgundy">I know exactly how you feel, btw.</h4>
-                                    <p>You want out of the relentless 9–5 cycle. You’re tired of money stress. You want more time with your family. And you’ve probably thought…</p>
-                                    <div class="pl-4 border-l-2 border-burgundy/20 italic space-y-2 text-charcoal/70"> <!-- Reduced spacing -->
-                                        <p>“I don’t even know where to start.”</p>
-                                        <p>“I’ve tried before and nothing worked.”</p>
-                                        <p>“Everyone online makes it look easy – what am I missing?”</p>
-                                    </div>
-                                </div>
+<li class="flex items-start gap-3">
+<svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+</svg>
+<span>
+<strong>How to position and explain your offer so people actually “get it”</strong>, so you stop overthinking what to say and start talking about your offer in a way that feels natural, clear, and easy for someone to say yes to.
+</span>
+</li>
 
+<li class="flex items-start gap-3">
+<svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+</svg>
+<span>
+<strong>My full breakdown of how to start showing up online with clarity</strong> so your content stops feeling random and starts pointing people toward your offer naturally – without posting more, or forcing consistency.
+</span>
+</li>
+
+</ul>
 
                                 <!-- 8. Price & CTA (PRECISION UPDATE: MASSIVE PRICE DISPLAY) -->
-                                <div class="space-y-2 pt-12 border-t border-charcoal/10 text-center">
+                                <div class="space-y-2 pt-12  text-center">
                                     <div class="flex flex-col items-center justify-center">
                                         <div style="text-align:center; margin-top:10px;">
+<div style="
+    color:#6B1D28;
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:6px;
+    letter-spacing:.5px;
+">
+    Regular price → Today
+</div>
 
     <div style="
         font-family:'Inter', sans-serif;
@@ -284,56 +558,42 @@ without chasing trends or copying everyone else.
 
     </div>
 
-    <div style="
-        margin-top:6px;
-        font-size:14px;
-        letter-spacing:1px;
-        opacity:.6;
-    ">
-        Regular price → Today
-    </div>
+   
 
 </div>
+
+   
+                                </div>
+
+                                <!-- 3. Text CTA & Button -->
+                               <!-- Reduced padding and margin -->
+                                    <!-- Increased text size -->
+                                    <p class="font-bold text-xl md:text-2xl text-burgundy mb-3">Click here if you want to turn the time you’re already spending on IG into income 👇</p> <!-- Reduced margin-bottom -->
+                                    
+                                </div>
+
 
                                     </div>
 
                                     <button onclick="scrollToForm()" class="btn-primary py-5 px-12 text-sm w-full md:w-auto shadow-2xl mt-6">Stop Talking, I’m in!</button>
-
-                                    <p class="text-xs italic opacity-80 mt-4 flex items-center justify-center gap-2"><span class="text-burgundy text-lg">*</span> this is an exclusive launch price that will be increasing soon</p>
+  <div class="bg-charcoal/5 p-6 rounded-sm text-center my-6 border-t border-charcoal/10 pt-6"></div>
+                                    <p class="text-base italic opacity-80 mt-4 flex items-center justify-center gap-2"><span class="text-burgundy text-lg">*</span> this is an exclusive launch price that will be increasing soon</p>
+                                
                                 </div>
 
-                                <!-- 11. Social Proof (Centered) -->
-                                <div class="pt-6 border-t border-charcoal/10 text-center"> <!-- Reduced padding -->
-                                    <h4 class="text-2xl md:text-4xl italic serif font-normal text-burgundy mb-6 flex items-center justify-center gap-3"> <!-- Reduced margin -->
-                                        <span class="text-xl md:text-2xl not-italic opacity-50">★</span> what others are saying <span class="text-xl md:text-2xl not-italic opacity-50">★</span>
-                                    </h4>
-                                    <!-- Replaced Canva Link with Image Link -->
-                                    <a href="https://ibb.co/ycpBsz06" target="_blank" class="block hover:opacity-95 transition-opacity">
-                                        <img src="https://i.ibb.co/cSwXTWJ6/Testimonials-on-sales-page-1.png" alt="Testimonials on sales page (1)" border="0" class="w-full shadow-sm">
-                                    </a>
-                                </div>
 
-                                <!-- 12. Conclusion -->
-                                <div class="space-y-4 pt-6 border-t border-charcoal/10 text-center"> <!-- Reduced spacing and padding -->
-                                    <p>This isn't a magic button. It's a proven process.<br>
-                                    But if you can follow directions and take imperfect action?</p>
-                                    <p class="font-bold text-xl text-burgundy serif">This will change your life.</p>
-                                </div>
-
-                                <!-- 13. Final Button -->
-                                <div class="pb-6 text-center"> <!-- Reduced padding -->
-                                    <button onclick="scrollToForm()" class="btn-primary py-4 px-8 text-xs w-full md:w-auto shadow-lg">I am Ready to make money online!</button>
-                                </div>
-                            </div>
-                            <!-- REPLACED CONTENT ENDS HERE -->
+                               
+                               
 
                         </div>
 
                         <!-- Right Section: Secure Payment Form (Stripe) -->
-                        <div class="lg:col-span-2">
+                        <div>
+
                             <!-- Removed 'sticky top-8' class per user request -->
-                            <div id="payment-area" class="bg-white p-6 md:p-10 shadow-2xl rounded-sm border border-charcoal/5 relative">
-                             
+                         <div id="payment-area"
+class="bg-white p-6 md:p-10 shadow-xl rounded-sm border border-charcoal/5 w-full max-w-lg mx-auto md:sticky md:top-10 mt-10 md:mt-0">
+
 <!-- PRICE HEADLINE -->
 
 <div style="text-align:center; margin-bottom:28px;">
@@ -387,12 +647,12 @@ so you’re not wasting weeks second-guessing yourself.
 
 </div>
 
-    <div class="flex justify-between items-center mb-2">
+    <div style="text-align:left;">
         <div>
 
         <div>
         
-</div> <!-- 🔴 مهم جداً -->
+</div> 
 
 
           
@@ -446,7 +706,7 @@ BONUSES INCLUDED
 
                                 </div>
                                 
-                                <form id="payment-form" class="space-y-6 text-left">
+                                <form id="payment-form" class="space-y-6 text-center md:text-left">
                                     <div>
                                      <label style="
 font-size:14px;
@@ -501,7 +761,7 @@ Step 2: Card Details</label>
                                     </div>
 
                                     <!-- PRECISION UPDATE: THE PROFESSIONAL UPSELL BOX -->
-                                    <div class="bg-[#FFF9E1] border-2 border-[#F3E5AB] p-7 rounded-sm my-10">
+                                    <div class="bg-[#FFF9E1] border border-[#F3E5AB] p-5 rounded-sm my-8 max-w-md mx-auto">
 
                                         <img src="https://i.ibb.co/mCVRDJZm/Device-Mmockups-1.png"
 
@@ -564,7 +824,7 @@ letter-spacing:.5px;
                                         </div>
                                     </div>
 
-                                    <div class="pt-2 text-left">
+                                    <div class="pt-2 text-center md:text-left">
                                         <label class="flex items-start gap-3 cursor-pointer group mb-6">
                                             <input type="checkbox" class="mt-1 accent-burgundy shrink-0" required>
                                             <span style="font-size:15px; line-height:1.6;" class="opacity-80 group-hover:opacity-100 transition-opacity"">
@@ -636,12 +896,17 @@ $37
 
                                         <button type="submit" class="btn-primary w-full py-5 text-sm shadow-xl font-bold">Complete My Order</button>
                                         
+
                                         </p>
                                     </div>
                                 </form>
+                                
                             </div>
-
-                        </div>
+                            </div>
+<button class="no-thanks">
+No thanks, I’m ok not turning this into income yet
+</button>
+                        
                     </div>
                 </div>
             </section>
@@ -649,7 +914,7 @@ $37
 
         <!-- Terms View -->
         <div id="terms-view" class="view">
-            <section class="section-padding pt-24 md:pt-32 bg-off-white min-h-screen text-left">
+            <section class="section-padding pt-16 md:pt-20 bg-off-white min-h-screen text-left">
                 <div class="max-w-4xl mx-auto px-4 md:px-6 text-left">
                     <button onclick="showView('checkout')" class="text-xs uppercase tracking-widest opacity-40 hover:opacity-100 mb-10 md:mb-12 flex items-center gap-2 transition-opacity text-left">
                         ← Back to checkout
@@ -695,10 +960,11 @@ $37
             </section>
         </div>
     </main>
+</body>
 
     <!-- Footer: Copyright and Terms Link -->
     <footer class="bg-off-white pt-10 pb-10 border-t border-charcoal/5 text-center">
-        <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="max-w-5xl mx-auto px-6 text-center">
             <div class="mb-4 text-center">
                 <button onclick="showView('terms')" style="font-size:12px" uppercase tracking-widest font-bold opacity-60 hover:text-burgundy transition-colors text-center">Terms & Conditions</button>
             </div>
@@ -842,4 +1108,5 @@ upsellCheckbox.addEventListener("change", () => {
         });
     </script>
 </body>
+
 </html>

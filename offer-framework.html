@@ -259,7 +259,8 @@ form.addEventListener("submit", async (e) => {
   const email = form.querySelector('input[type="email"]').value;
 
   try {
-    await fetch("/framework-lead", {
+   const response = await fetch("/framework-lead", {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -270,7 +271,7 @@ form.addEventListener("submit", async (e) => {
       }),
     });
 
-    window.location.href = "/success-framework";
+    window.location.href = "/thankyou-framework";
 
   } catch (err) {
     alert("Something went wrong.");
