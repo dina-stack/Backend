@@ -213,7 +213,7 @@ p{
                                         </li>
                                         <li class="flex items-start gap-3">
                                             <svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                            <span><strong>My proven method for packaging your idea into an offer people actually want to</strong> buy, without chasing trends or copying everyone else.</span>
+                                            <span><strong>My proven method for packaging your idea into an offer people actually want to buy, without chasing trends or copying everyone else.</strong></span>
                                         </li>
                                         <li class="flex items-start gap-3">
                                             <svg class="w-5 h-5 text-green-600 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -419,7 +419,7 @@ border:1px solid rgba(0,0,0,0.06);
     margin-bottom:14px;
     text-transform:uppercase;
 ">
-    Only <span style="font-weight:900;">2 BONUSES</span> Included
+BONUSES INCLUDED
 </div>
 
     <!-- BONUS 1 -->
@@ -502,7 +502,7 @@ Step 2: Card Details</label>
                                         </div>
                                         
                                         <!-- Stripe Error Feedback -->
-                                        <div id="error-message" style="font-size:12px" text-red-600 mt-2 font-medium"></div>
+                                        <div id="error-message" class="text-red-600 mt-2 font-medium" style="font-size:12px"></div>
                                     </div>
 
                                     <!-- PRECISION UPDATE: THE PROFESSIONAL UPSELL BOX -->
@@ -530,15 +530,9 @@ text-align:center;
 color:#2D2926;
 ">
 
-<span style="
-color:#6B1D28;
-font-weight:700;
-letter-spacing:.3px;
-">
-[HIGHLY RECOMMENDED]
-</span>
 
-Important: If you want to save yourself hours of overthinking, rewriting, and second-guessing, add the Freedom Offer Workbook™ to your order.
+
+If you want to save yourself hours of overthinking, rewriting, and second-guessing, add the Freedom Offer Workbook™ to your order.
 
 <br><br>
 
@@ -554,8 +548,12 @@ You just print these pages, and start!
 
 <br><br>
 
-<strong style="color:#6B1D28;">
-[$10 one-time add-on]
+<strong style="
+color:#6B1D28;
+font-size:20px;
+letter-spacing:.5px;
+">
+[$10 ONE-TIME ADD-ON]
 </strong>
 
 </p>
@@ -730,9 +728,11 @@ $37
          * Smooth scroll function for action buttons
          */
         function scrollToForm() {
-            const paymentArea = document.getElementById('payment-area');
-            paymentArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+    const contact = document.getElementById('name');
+    contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+
 
         /**
          * Initialize Stripe Split Elements
