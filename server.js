@@ -40,7 +40,7 @@ app.get("/success-framework", (req, res) => {
   res.sendFile(path.join(__dirname, "success-framework.html"));
 });
 app.get("/thankyou-framework", (req, res) => {
-  res.sendFile(path.join(__dirname, "thankyou-framework.html"));
+  res.sendFile(path.join(__dirname, "thankyou-framework"));
 });
 
 /* =========================
